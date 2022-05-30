@@ -1,0 +1,17 @@
+{
+  "name": "block-chain-college",
+  "version": "1.0.0",
+  "description": "Simple Blockchain project for the subject of system security",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blockchain"
+  ],
+  "author": "Gabriel Feitosa",
+  "license": "ISC",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
