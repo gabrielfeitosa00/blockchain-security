@@ -110,10 +110,10 @@ class Blockchain {
     }
   
     /**
-     * Returns the balance of a given wallet address.
+     * Retorna o saldo atual de um dado endereço
      *
      * @param {string} address
-     * @returns {number} The balance of the wallet
+     * @returns {number}
      */
     getBalanceOfAddress(address) {
       let balance = 0;
@@ -135,8 +135,7 @@ class Blockchain {
     }
   
     /**
-     * Returns a list of all transactions that happened
-     * to and from the given wallet address.
+     * Pega todas as transações para um dado endereço
      *
      * @param  {string} address
      * @return {Transaction[]}
@@ -212,6 +211,28 @@ class Blockchain {
             throw new Error('A dificuldade não pode ser menor que 1');
         }
         this.difficulty = difficulty
+    }
+    /**
+     * Metódo que retorna e exibe todos os blocos atuais da blockchain
+     * @returns {Block[]}
+     */
+    getCurrentBlocks(){
+    
+    for(const [index,block] of this.chain.entries()){
+      console.log("{\n")
+      if(index === 0 && block.previousHash === ""){
+        console.log("(Bloco Gênese)\n")
+      }
+      console.log(`Hash: ${block.hash} \n`)
+      console.log(`Hash Anterior: ${block.previousHash? block.previousHash : "Nenhum"}\n`)
+      console.log(`Nonce: ${block.nonce}\n`)
+      console.log(`Transações válidas: ${block.hasValidTransactions()? "Sim" : "Não"}\n`)
+      console.log(`Criação: ${block.timestamp}\n`)
+    }    
+  
+    return this.chain
+
+
     }
   }
   
