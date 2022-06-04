@@ -9,7 +9,8 @@ const generateKeyPair = () =>{
 }
 
 const signWithKey= (key,content)=>{
-    const signature = key.sign(content, 'base64');
+     const keyObj = ec.keyFromPrivate(key);
+    const signature = keyObj.sign(content, 'base64');
     return signature.toDER('hex');
 }
 

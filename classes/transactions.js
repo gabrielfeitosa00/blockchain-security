@@ -31,12 +31,12 @@ class Transaction {
      *
      * @param {string} signingKey
      */
-    signTransaction(signingKey) {
+    signTransaction(publicKey,privateKey) {
     /**  
      * Verifica se a chave recebida para assinatura é a mesma chave no endeço de
      * origem
     */
-      if (signingKey !== this.fromAddress) {
+      if (publicKey !== this.fromAddress) {
         throw new Error('Não é possível assinar transactions para outras carteiras!');
       }
       
@@ -46,7 +46,8 @@ class Transaction {
   * parâmetro seta a assinatura da classe
   */
       const hashTx = this.calculateHash();
-      const sig = signWithKey(signingKey,hashTx) 
+      console.log(hashTx)
+      const sig = signWithKey(privateKey,hashTx) 
   
       this.signature = sig
     }
