@@ -1,4 +1,5 @@
 const { Transaction } = require('./transactions');
+const crypto = require('crypto');
 class Block {
     /**
      * Método construtor que recebe como parâmetro uma timestamp, 
@@ -41,8 +42,8 @@ class Block {
         this.hash = this.calculateHash();
       }
   
-      debug(`Bloco minerado: ${this.hash}`);
-      debug(`Nonce do bloco após a mineração: ${this.nonce}`)
+     console.log(`Bloco minerado: ${this.hash}`);
+     console.log(`Nonce do bloco após a mineração: ${this.nonce}`)
     }
   
     /**
