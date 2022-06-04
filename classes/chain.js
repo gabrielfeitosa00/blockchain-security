@@ -1,6 +1,7 @@
 const { Block } = require('./block');
 const { Transaction } = require('./transactions');
-const {getRandomInt} = require("./utils/getRandomIntOnARange")
+const {getRandomInt} = require("../utils/getRandomIntOnARange")
+
 class Blockchain {
     /**
      * Método contrututor que recebe como parâmetro:
@@ -52,7 +53,7 @@ class Blockchain {
       console.time("Bloco minerado em: ");
       block.mineBlock(this.difficulty);
   
-      debug('Bloco minerado com sucesso!');
+      console.log('Bloco minerado com sucesso!');
       console.timeEnd("Bloco minerado em: ");
       this.chain.push(block);
   
@@ -106,7 +107,7 @@ class Blockchain {
                                       
   
       this.pendingTransactions.push(transaction);
-      debug('transaction added: %s', transaction);
+      console.log('transaction added: %s', transaction);
     }
   
     /**
@@ -130,7 +131,7 @@ class Blockchain {
         }
       }
   
-      debug('getBalanceOfAdrees: %s', balance);
+      console.log('Saldo da carteira: %s', balance);
       return balance;
     }
   
@@ -151,7 +152,7 @@ class Blockchain {
         }
       }
   
-      debug('get transactions for wallet count: %s', txs.length);
+      console.log('get transactions for wallet count: %s', txs.length);
       return txs;
     }
   
@@ -217,7 +218,8 @@ class Blockchain {
      * @returns {Block[]}
      */
     getCurrentBlocks(){
-    
+    console.log("Blocos da blockchain: ")
+    console.log("----------------------------------------------------")
     for(const [index,block] of this.chain.entries()){
       console.log("{\n")
       if(index === 0 && block.previousHash === ""){
@@ -228,6 +230,7 @@ class Blockchain {
       console.log(`Nonce: ${block.nonce}\n`)
       console.log(`Transações válidas: ${block.hasValidTransactions()? "Sim" : "Não"}\n`)
       console.log(`Criação: ${block.timestamp}\n`)
+      console.log("\n}")
     }    
   
     return this.chain
