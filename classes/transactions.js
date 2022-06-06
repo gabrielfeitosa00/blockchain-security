@@ -29,16 +29,17 @@ class Transaction {
      * Recebe como parâmetro a chave pública gerada pela função de gerar pares de 
      * chaves
      *
-     * @param {string} signingKey
+     * @param {string} publicKey
+     * @param {string} privateKey
      */
     signTransaction(publicKey,privateKey) {
     /**  
      * Verifica se a chave recebida para assinatura é a mesma chave no endeço de
      * origem
     */
-      if (publicKey !== this.fromAddress) {
-        throw new Error('Não é possível assinar transactions para outras carteiras!');
-      }
+       if (publicKey !== this.fromAddress) {
+         throw new Error('Não é possível assinar transactions para outras carteiras!');
+       }
       
   
  /**
